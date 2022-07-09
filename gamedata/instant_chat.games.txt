@@ -1,17 +1,5 @@
 "Games"
 {
-    "#default"
-    {
-        "Offsets"
-        {
-            "OS"
-            {
-                "windows"   "1"
-                "linux"     "2"
-            }
-        }
-    }
-
     "cstrike"
     {
         "Addresses"
