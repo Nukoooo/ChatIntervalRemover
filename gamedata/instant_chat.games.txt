@@ -1,0 +1,81 @@
+"Games"
+{
+    "#default"
+	{
+        "Offsets"
+		{
+			"OS"
+			{
+				"windows"   "1"
+				"linux"     "2"
+			}
+        }
+    }
+
+    "cstrike"
+    {
+        "Addresses"
+        {
+            "CBasePlayer->m_fLastPlayerTalkTime"
+            {
+                "windows"
+                {
+                    "signature"    "m_fLastPlayerTalkTime"
+                    "read"         "2" // skip the first 2 bytes
+                }
+                "linux"
+                {
+                    "signature"    "Host_Say"
+                    "read"         "2"
+                }
+            }
+        }
+
+        "Signatures"
+        {
+            // Search for string "Display player message", you will see the string is passed as a parameter to the create command function.
+            // E.g. CreateConvar("say", Command_Callback, "Display player message", unk_1, unk_2);
+            // Take a look into Command_Callback, you will see an if statement that checks with current time.
+            // E.g. if (gpGlobals->cur_time > *(float*)(player + fLastPlayerTalkTimeOffset) + 0.66) // 0.66 is the interval between two messages.
+            // then make a signature of the offset of m_fLastPlayerTalkTime.
+            "m_fLastPlayerTalkTime"
+            {
+                "library"   "server"
+                "windows"   "\xD9\x9E\x2A\x2A\x2A\x2A\x5E\x5D\xC3\xE8"
+                "linux"     "\x89\x83\x2A\x2A\x2A\x2A\x83\xC4\x14\x5B\x5D\xC3\x8D\xB6\x00\x00\x00\x00\x8D\xBF\x00\x00\x00\x00\x55\x89\xE5\x83\xEC\x18"
+            }
+        }
+    }
+
+    "csgo"
+    {
+        "Addresses"
+        {
+            "CBasePlayer->m_fLastPlayerTalkTime"
+            {
+                "windows"
+                {
+                    "signature"    "m_fLastPlayerTalkTime"
+                    "read"         "2" // skip the first 2 bytes
+                }
+                "linux"
+                {
+                    "signature"    "Host_Say"
+                    "read"         "2"
+                }
+            }
+        }
+
+        "Signatures"
+        {
+            // You can do the same procedure as in css on linux
+            // But for windows you need to search for "say" or "say_team", get into the function that has it, look for the function that calls it, then the rest is the same.
+            "m_fLastPlayerTalkTime"
+            {
+                "library"   "server"
+                "windows"   "\x89\x86\x2A\x2A\x2A\x2A\x5E\x8B\xE5\x5D\xC3\x8B\x0D"
+                "linux"     "\x89\x83\x2A\x2A\x2A\x2A\x8B\x5D\xF8\x8B\x75\xFC\x89\xEC\x5D\xC3\x66\x90\xE8"
+            }
+        }
+    }
+}
