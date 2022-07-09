@@ -13,7 +13,7 @@
                 }
                 "linux"
                 {
-                    "signature"    "Host_Say"
+                    "signature"    "m_fLastPlayerTalkTime"
                     "read"         "2"
                 }
             }
@@ -48,7 +48,7 @@
                 }
                 "linux"
                 {
-                    "signature"    "Host_Say"
+                    "signature"    "m_fLastPlayerTalkTime"
                     "read"         "2"
                 }
             }
