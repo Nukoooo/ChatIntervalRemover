@@ -67,6 +67,9 @@ public Action OnClientSayCommand(int client, const char[] command, const char[] 
 {
     if (1 <= client <= MaxClients)
     {
+        if (!g_bInstantChat[client])
+            return Plugin_Continue;
+
         /// For some reason, if I use the original value and subtract the interval (which is 0.66) it won't work, so i just set this to 0
         SetEntDataFloat(client, m_fLastPlayerTalkTime_Offset, 0.0);
     }
