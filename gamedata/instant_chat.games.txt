@@ -1,14 +1,14 @@
 "Games"
 {
     "#default"
-	{
+    {
         "Offsets"
-		{
-			"OS"
-			{
-				"windows"   "1"
-				"linux"     "2"
-			}
+        {
+            "OS"
+            {
+                "windows"   "1"
+                "linux"     "2"
+            }
         }
     }
 
