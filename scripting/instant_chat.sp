@@ -8,8 +8,8 @@ bool g_bInstantChat[MAXPLAYERS + 1];
 
 public Plugin myinfo =
 {
-	name = "Chat interval remover",
-	author = "Nuko",
+    name = "Chat interval remover",
+    author = "Nuko",
     version = "1.1",
 }
 
